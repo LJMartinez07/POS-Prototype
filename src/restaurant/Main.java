@@ -18,7 +18,7 @@ import java.util.Date;
  * @author Luis
  */
 public class Main {
-   /* static User user = new User();
+  static User user = new User();
     static Employe emp = new Employe();
     public static void createFile(){
         user.createFile();
@@ -51,6 +51,6 @@ public class Main {
         readFile();
         writeFile();
   
-    }*/
+    }
 
 }
