@@ -6,9 +6,11 @@
 package com.restaurant.views;
 
 import com.placeholder.PlaceHolder;
+import com.restaurant.classes.Employe;
 import com.restaurant.classes.User;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import restaurant.Main;
 
 /**
  *
@@ -16,14 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+ 
+  
+    Main first = new Main();
     public Login() {
         initComponents();
-           this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        first.DefaultValidation();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,8 +81,12 @@ public class Login extends javax.swing.JFrame {
         
         if (us.Login(this.txt_username.getText(), this.jp_password.getText())) {
             dispose();
-            Loading load = new Loading();
-            load.show();
+           /* Loading load = new Loading();
+            load.show();*/
+            MainApp app = new MainApp();
+                
+                app.setExtendedState(MAXIMIZED_BOTH);
+                app.setVisible(true);
         }else{
              JOptionPane.showMessageDialog(new JFrame(), "The Username and password you've entered dosen't match any account.", "Upss..",
         JOptionPane.ERROR_MESSAGE);

@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="De Usuarios "/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maintanceUsersActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="maintanceComments">
               <Properties>
@@ -33,6 +36,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="De Empleados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maintanceEmployeesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="maintanceKindsOfProducts">
               <Properties>
@@ -132,6 +138,10 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="DesktopPane">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">

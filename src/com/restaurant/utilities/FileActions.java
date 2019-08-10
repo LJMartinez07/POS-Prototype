@@ -13,6 +13,7 @@ public interface FileActions {
   
     public void createFile();
     public void writeFile();
-    public void ReadFile();
+    public void readFile();
+    public void validateFile();
     
 }

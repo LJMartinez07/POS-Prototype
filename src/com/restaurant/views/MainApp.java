@@ -5,6 +5,12 @@
  */
 package com.restaurant.views;
 
+import com.restaurant.views.maintenances.MainEmployees;
+import com.restaurant.views.maintenances.MainUsers;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Luis
@@ -14,6 +20,8 @@ public class MainApp extends javax.swing.JFrame {
     /**
      * Creates new form MainApp
      */
+    private MainUsers regUser;
+    private MainEmployees regEmployees;
     public MainApp() {
         initComponents();
     }
@@ -63,6 +71,11 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.setText("Mantenimientos");
 
         maintanceUsers.setText("De Usuarios ");
+        maintanceUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceUsersActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceUsers);
 
         maintanceComments.setText("De Comentarios");
@@ -75,6 +88,11 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.add(maintanceCustomers);
 
         maintanceEmployees.setText("De Empleados");
+        maintanceEmployees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceEmployeesActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceEmployees);
 
         maintanceKindsOfProducts.setText("De Tipo de Productos");
@@ -127,8 +145,28 @@ public class MainApp extends javax.swing.JFrame {
             .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
+        DesktopPane.getAccessibleContext().setAccessibleName("");
+        DesktopPane.getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void maintanceUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceUsersActionPerformed
+        regUser = new MainUsers();
+        this.DesktopPane.add(regUser);
+        regUser.show();
+        
+        
+    }//GEN-LAST:event_maintanceUsersActionPerformed
+
+    private void maintanceEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceEmployeesActionPerformed
+        regEmployees = new MainEmployees();
+     
+        
+        this.DesktopPane.add(regEmployees);
+        regEmployees.show();
+        
+    }//GEN-LAST:event_maintanceEmployeesActionPerformed
 
     
 

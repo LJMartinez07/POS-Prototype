@@ -36,6 +36,11 @@ public class Person {
         this.Cedula = Cedula;
         this.DateReg = DateReg;
     }
+    
+    public Person(String Name){
+        this.Name = Name;
+        
+    }
     public Person(){
         
     }

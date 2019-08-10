@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 import com.restaurant.utilities.FileActions;
-import java.util.Date;
+import restaurant.Main;
 
 /**
  *
@@ -24,7 +24,7 @@ import java.util.Date;
 public class User extends Employe implements FileActions{
     private String userName, 
             password,
-            fileName = "User.txt",
+            fileName = "Files/User.txt",
             email;
     private int idUser, accessLevel, fkEmploye;
     
@@ -124,30 +124,30 @@ public class User extends Employe implements FileActions{
         String tempUsername, tempPassword;
         
         try {
-             x = new Scanner(new File(this.fileName));
-        x.useDelimiter("[,\n]");
-        while(x.hasNext() && !found){
-            x.next();
-            tempUsername = x.next();
-            tempPassword = x.next();
-            
-         
-
-       
-            
-            if (tempUsername.equals(Username) && tempPassword.equals(getMD5(Password))) {
-                found = true;
+            x = new Scanner(new File(this.fileName));
+            x.useDelimiter("[,\n]");
+            while(x.hasNext() && !found){
+                x.next();
+                tempUsername = x.next();
+                tempPassword = x.next();
+                if (tempUsername.equals(Username) && tempPassword.equals(getMD5(Password))) {
+                    found = true;
+                }
             }
-        }
-            
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("File 'User.txt' not found login method");
+        }
+        return found;   
+    }
+    
+    @Override
+    public void validateFile(){
+        File file = new File(this.fileName);
+        if (!file.exists()) {
+            Main defaultF = new Main();
+            defaultF.DefaultUser();
         }
         
-       
-       
-        return found;
-    
     }
 
    
@@ -178,16 +178,17 @@ public class User extends Employe implements FileActions{
      File file = new File(this.fileName);
         if (!file.exists()) {
             try {
-                 file.createNewFile();
+                file.createNewFile();
+                System.out.println("'User.txt' has been created successfully");
             } catch (IOException e) {
                 System.out.println("Error to create 'User.txt'");
             }
         }
-        System.out.println("'User.txt' has been created successfully");
     }
 
     @Override
-    public void ReadFile() {
+    public void readFile() {
+        System.out.println("I'm Reading");
         try {
             x = new Scanner(new File(this.fileName));
             x.useDelimiter("[,\n]");

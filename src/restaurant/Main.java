@@ -26,31 +26,41 @@ public class Main {
     }
     
     public static void readFile(){
-        user.ReadFile();
-        emp.ReadFile();
+        System.out.println("I'm Reading");
+        user.readFile();
+        emp.readFile();
     }
     
     public static void writeFile(){
-         user.writeFile();
+        user.writeFile();
         emp.writeFile();
     }
-
-    public static void main(String[] args) throws ParseException {
-        SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
-        
-         Date date = new Date();  
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-    String strDate= formatter.format(date);  
-   
-
-      
-
+    
+   public void DefaultUser(){
+       user.createFile();
         user.getUsers().add(new User(1, "Admin", getMD5("123456"), "Luis@gmail.com", 1, 1));
-        emp.getEmployees().add(new Employe(1, "Administador", "NO PICTURE", 0, 0, "Luis", "Martinez", "Martinez", "M", "santiago", "54", "56", "6565", date));
-       
-        readFile();
-        writeFile();
-  
+        user.writeFile();
+        System.out.println("Default User has been created");
+        
     }
+  public  void defaultEmploye(){
+         Date date = new Date();
+         emp.createFile();
+         emp.getEmployees().add(new Employe(1, 1, "NO PICTURE", 0, 0, 0, "Luis", "Martinez", "", "M", "santiago", "809-570-7176", "809-502-2278", "44544564", date));
+        emp.writeFile();
+        System.out.println("Default Employe has been created");
+    }
+
+    
+    public void DefaultValidation(){
+        defaultEmploye();
+                DefaultUser();
+       
+    }
+    public static void main(String[] args) throws ParseException {
+        
+     
+  
+    } 
 
 }
