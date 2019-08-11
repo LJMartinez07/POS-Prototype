@@ -144,8 +144,10 @@ public class User extends Employe implements FileActions{
     public void validateFile(){
         File file = new File(this.fileName);
         if (!file.exists()) {
-            Main defaultF = new Main();
-            defaultF.DefaultUser();
+            this.createFile();
+            this.getUsers().add(new User(1, "Admin", getMD5("123456"), "Luis@gmail.com", 1, 1));
+            this.writeFile();
+            System.out.println("Default User has been created");  
         }
         
     }

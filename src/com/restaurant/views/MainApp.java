@@ -5,6 +5,7 @@
  */
 package com.restaurant.views;
 
+import com.restaurant.views.maintenances.MainComments;
 import com.restaurant.views.maintenances.MainEmployees;
 import com.restaurant.views.maintenances.MainUsers;
 import java.beans.PropertyVetoException;
@@ -22,6 +23,7 @@ public class MainApp extends javax.swing.JFrame {
      */
     private MainUsers regUser;
     private MainEmployees regEmployees;
+    private MainComments regComments;
     public MainApp() {
         initComponents();
     }
@@ -79,6 +81,11 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.add(maintanceUsers);
 
         maintanceComments.setText("De Comentarios");
+        maintanceComments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceCommentsActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceComments);
 
         maintanceTable.setText("De Mesa");
@@ -167,6 +174,14 @@ public class MainApp extends javax.swing.JFrame {
         regEmployees.show();
         
     }//GEN-LAST:event_maintanceEmployeesActionPerformed
+
+    private void maintanceCommentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceCommentsActionPerformed
+       regComments = new MainComments();
+     
+        
+        this.DesktopPane.add(regComments);
+        regComments.show();
+    }//GEN-LAST:event_maintanceCommentsActionPerformed
 
     
 

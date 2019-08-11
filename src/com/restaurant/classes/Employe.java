@@ -32,7 +32,7 @@ public class Employe extends Person implements FileActions{
     private double Balance, 
             PorcentBalance;
    
-    public ArrayList<Employe> employees = new ArrayList<>();
+    private ArrayList<Employe> employees = new ArrayList<>();
     
     public Employe(int IdEmploye, int KindOfEmploye, String Picture, double Balance, double PorcentBalance, int Available, String Name, String LastName1, String LastName2, String Gender, String Adress, String Telephone, String Phone, String Cedula, Date DateReg) {
         super( Name, LastName1, LastName2, Gender, Adress, Telephone, Phone, Cedula, DateReg);
@@ -117,14 +117,18 @@ public class Employe extends Person implements FileActions{
     public void validateFile(){
         File file = new File(this.fileName);
         if (!file.exists()) {
-            Main defaultF = new Main();
-            defaultF.defaultEmploye();
+            Date date = new Date();
+            this.createFile();
+            this.getEmployees().add(new Employe(1, 1, "NO PICTURE", 0, 0, 0, "Luis", "Martinez", "", "M", "santiago", "809-570-7176", "809-502-2278", "44544564", date));
+            this.writeFile();
+            System.out.println("Default Employe has been created");
+          
         }
     }
 
     @Override
     public void createFile() {
-      File file = new File(this.fileName);
+        File file = new File(this.fileName);
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -163,7 +167,7 @@ public class Employe extends Person implements FileActions{
 
     @Override
     public void readFile() {
-         SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
    
         try {
             x = new Scanner(new File(this.fileName));

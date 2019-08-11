@@ -46,7 +46,12 @@ public class MainEmployees extends javax.swing.JInternalFrame {
         js_Employees = new javax.swing.JScrollPane();
         tb_Employees = new javax.swing.JTable();
 
-        Header.setLayout(new java.awt.GridLayout());
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Registro de Empleados");
+
+        Header.setLayout(new java.awt.GridLayout(1, 0));
 
         Add.setText("Agregar");
         Add.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +64,7 @@ public class MainEmployees extends javax.swing.JInternalFrame {
         Modify.setText(" Modificar");
         Header.add(Modify);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Buscar Empleado: ");

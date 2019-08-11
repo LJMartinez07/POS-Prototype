@@ -6,7 +6,6 @@
 package com.restaurant.tablemodels;
 
 import com.restaurant.classes.Employe;
-import com.restaurant.classes.User;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 

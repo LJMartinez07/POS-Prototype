@@ -51,6 +51,7 @@ public class MainUsers extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Registro de Usuario");
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Buscar Usuario: ");
