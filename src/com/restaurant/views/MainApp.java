@@ -6,6 +6,7 @@
 package com.restaurant.views;
 
 import com.restaurant.views.maintenances.MainComments;
+import com.restaurant.views.maintenances.MainCustomers;
 import com.restaurant.views.maintenances.MainEmployees;
 import com.restaurant.views.maintenances.MainTables;
 import com.restaurant.views.maintenances.MainUsers;
@@ -23,6 +24,7 @@ public class MainApp extends javax.swing.JFrame {
     private MainEmployees regEmployees;
     private MainComments regComments;
     private MainTables regTables;
+    private MainCustomers regCustomers;
     public MainApp() {
         initComponents();
     }
@@ -96,6 +98,11 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.add(maintanceTable);
 
         maintanceCustomers.setText("De Clientes");
+        maintanceCustomers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceCustomersActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceCustomers);
 
         maintanceEmployees.setText("De Empleados");
@@ -193,6 +200,13 @@ public class MainApp extends javax.swing.JFrame {
         this.DesktopPane.add(regTables);
         regTables.show();
     }//GEN-LAST:event_maintanceTableActionPerformed
+
+    private void maintanceCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceCustomersActionPerformed
+        regCustomers = new MainCustomers();
+       
+        this.DesktopPane.add(regCustomers);
+        regCustomers.show();
+    }//GEN-LAST:event_maintanceCustomersActionPerformed
 
     
 

@@ -418,6 +418,11 @@ public class MainEmployees extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_ModifyActionPerformed
 
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
+
+        if (this.txt_name.getText().isEmpty() || this.txt_last1.getText().isEmpty() ||  this.txt_cedula.getText().isEmpty() || this.txt_telephone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Campos en Blanco", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         this.emp.add(Integer.parseInt(this.txt_id.getText()) , 1, "", Double.parseDouble(this.txt_balance.getText()), Double.parseDouble(this.txt_balanceP.getText()),0 ,this.txt_name.getText(), this.txt_last1.getText(), this.txt_last2.getText(), this.jb_gender.getSelectedItem().toString(), this.txt_address.getText(), this.txt_telephone.getText(), this.txt_phone.getText(), this.txt_cedula.getText());
         this.tme.initTable(tb_Employees);
         JOptionPane.showMessageDialog(new JFrame(), "Agregado.", "Nice",

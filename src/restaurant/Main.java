@@ -6,13 +6,11 @@
 package restaurant;
 
 import com.restaurant.classes.Comment;
+import com.restaurant.classes.Customer;
 import com.restaurant.classes.Employe;
 import com.restaurant.classes.Table;
 import com.restaurant.classes.User;
-import static com.restaurant.utilities.Hash.getMD5;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 
 /**
@@ -25,6 +23,7 @@ public class Main {
     static Employe emp = new Employe();
     static Comment comment = new Comment();
     static Table table = new Table();
+    static Customer customer = new Customer();
     public static void createFile(){
         /*user.createFile();
         emp.createFile();*/
@@ -55,6 +54,7 @@ public class Main {
         user.validateFile();
         comment.validateFile();
         table.validateFile();
+        customer.validateFile();
     }
     public static void main(String[] args){
         
