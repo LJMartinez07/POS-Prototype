@@ -266,7 +266,7 @@ public class RegUser extends javax.swing.JDialog {
       
         int newId =  this.user.getUsers().get(this.user.getUsers().size() - 1).getIdUser() + 1;
         int IdEmploye =((Employe) this.cbx_Employees.getSelectedItem()).getIdEmploye();
-        this.user.getUsers().add(new User(newId, this.txt_UserName.getText(), getMD5(this.txt_Password.getText()), this.txt_Email.getText(), Integer.parseInt(this.cbx_LevelAcccess.getSelectedItem().toString()),IdEmploye ));
+        this.user.add(this.txt_UserName.getText(), getMD5(this.txt_Password.getText()), this.txt_Email.getText(), Integer.parseInt(this.cbx_LevelAcccess.getSelectedItem().toString()),IdEmploye);
     
         
         for (int i = 0; i < this.emp.getEmployees().size(); i++) {
@@ -276,7 +276,7 @@ public class RegUser extends javax.swing.JDialog {
           
             
         }
-        this.user.writeFile();
+  
         this.emp.writeFile();
         clear();
     }//GEN-LAST:event_btn_addUserActionPerformed

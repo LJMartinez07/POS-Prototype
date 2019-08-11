@@ -213,7 +213,13 @@ public class User extends Employe implements FileActions{
     }
 
    
-    
+    public void add(String username, String password, String email, int access, int fk ){
+        
+        readFile();
+        this.getUsers().add(new User(1, username, getMD5(password), email, access, fk));
+        writeFile();
+        
+    }
 
     
     

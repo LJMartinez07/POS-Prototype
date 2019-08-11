@@ -5,7 +5,7 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-
+Files/
 *.class
 .mtj.tmp/
 *.jar

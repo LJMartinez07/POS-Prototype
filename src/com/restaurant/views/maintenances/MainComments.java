@@ -5,7 +5,10 @@
  */
 package com.restaurant.views.maintenances;
 
+import com.restaurant.classes.Comment;
 import com.restaurant.tablemodels.TableModelsComments;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,13 +19,73 @@ public class MainComments extends javax.swing.JInternalFrame {
     /**
      * Creates new form MainComments
      */
-    
+    static boolean status = false;
+     Comment cm;
     TableModelsComments tmc = new TableModelsComments();
+    
     public MainComments() {
         initComponents();
+        this.cm = new Comment();
+        this.cm.readFile();
         
        this.tmc.initTable(tb_Commnets);
     }
+    
+    public void clear(){
+        this.txt_id.setText("");
+        this.txt_description.setText("");
+        this.txt_email.setText("");
+        this.txt_subject.setText("");
+    }
+    
+    public  void Search(){
+        int id = 0;
+        boolean found = false;
+        
+      
+        try {
+            if (!this.txt_id.getText().isEmpty()) {
+                 id =Integer.parseInt( this.txt_id.getText());
+                
+         }
+             
+          for (Comment comment : this.cm.getComments()) {
+              if (comment.getIdComment() == id) {
+                this.btn_Add.setEnabled(false);
+                this.btn_Modify.setEnabled(true);
+                this.txt_email.setText(comment.getEmail());
+                this.txt_subject.setText(comment.getSubject());
+                this.txt_description.setText(comment.getDescription());
+                found = true;
+                break;
+              }
+          }
+            
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+        
+        if (!found) {
+              this.btn_Add.setEnabled(true);
+                this.btn_Modify.setEnabled(false);
+                this.txt_email.setText("");
+                this.txt_subject.setText("");
+                this.txt_description.setText("");
+            
+        }
+         
+            
+        
+         
+         
+                
+                
+            
+
+       
+       
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,13 +101,14 @@ public class MainComments extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Descripcion = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
         txt_subject = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_description = new javax.swing.JTextArea();
         btn_Add = new javax.swing.JButton();
         btn_Modify = new javax.swing.JButton();
+        txt_id = new javax.swing.JTextField();
+        btn_delete = new javax.swing.JButton();
         Body = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_Commnets = new javax.swing.JTable();
@@ -69,39 +133,65 @@ public class MainComments extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(txt_description);
 
         btn_Add.setText("Enviar");
+        btn_Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AddActionPerformed(evt);
+            }
+        });
 
         btn_Modify.setText("Modificar");
         btn_Modify.setEnabled(false);
+        btn_Modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModifyActionPerformed(evt);
+            }
+        });
+
+        txt_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_idKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_idKeyReleased(evt);
+            }
+        });
+
+        btn_delete.setText("Borrar");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderLayout.createSequentialGroup()
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(HeaderLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(HeaderLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(HeaderLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(48, 48, 48)
-                                .addComponent(txt_email)))
-                        .addGap(27, 27, 27)
+                        .addComponent(jLabel2)
+                        .addGap(48, 48, 48)
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Add)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(Descripcion)))
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btn_Add)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_Modify)))
-                .addGap(14, 14, 14)
+                            .addComponent(txt_id)
+                            .addGroup(HeaderLayout.createSequentialGroup()
+                                .addComponent(btn_Modify)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_delete)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(Descripcion))
+                .addGap(16, 16, 16)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(txt_subject))
                 .addContainerGap())
         );
@@ -112,8 +202,8 @@ public class MainComments extends javax.swing.JInternalFrame {
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_subject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_subject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HeaderLayout.createSequentialGroup()
@@ -127,7 +217,8 @@ public class MainComments extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_Add)
-                            .addComponent(btn_Modify))
+                            .addComponent(btn_Modify)
+                            .addComponent(btn_delete))
                         .addGap(31, 31, 31))))
         );
 
@@ -173,6 +264,44 @@ public class MainComments extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idKeyPressed
+     
+    
+    }//GEN-LAST:event_txt_idKeyPressed
+
+    private void txt_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idKeyReleased
+        Search();
+        
+    }//GEN-LAST:event_txt_idKeyReleased
+
+    private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
+       cm.add(Integer.parseInt(this.txt_id.getText()), this.txt_email.getText(), this.txt_subject.getText(), this.txt_description.getText());
+        this.tmc.initTable(tb_Commnets);
+        clear();
+       
+    }//GEN-LAST:event_btn_AddActionPerformed
+
+    private void btn_ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModifyActionPerformed
+        cm.modify(Integer.parseInt(this.txt_id.getText()), this.txt_email.getText(), this.txt_subject.getText(), this.txt_description.getText());
+        this.tmc.initTable(tb_Commnets);
+          JOptionPane.showMessageDialog(new JFrame(), "Thanks for you comment.", "Nice",
+        JOptionPane.INFORMATION_MESSAGE);
+        clear();
+    }//GEN-LAST:event_btn_ModifyActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        System.out.println(this.tb_Commnets.getSelectedRow());
+        try {
+            cm.delete(this.tb_Commnets.getSelectedRow());
+            this.tmc.initTable(tb_Commnets);
+        } catch (Exception e) {
+              JOptionPane.showMessageDialog(new JFrame(), "Select a row PLEASE.", "Upss..",
+        JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Body;
@@ -180,6 +309,7 @@ public class MainComments extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JButton btn_Add;
     private javax.swing.JButton btn_Modify;
+    private javax.swing.JButton btn_delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

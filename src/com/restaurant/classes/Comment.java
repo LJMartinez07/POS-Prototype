@@ -41,6 +41,8 @@ public class Comment implements FileActions{
         this.Description = Description;
         this.CrationDate = CrationDate;
     }
+    
+    
 
     public int getIdComment() {
         return IdComment;
@@ -165,4 +167,32 @@ public class Comment implements FileActions{
         }
     }
     
+    public void add(int id, String email, String subject, String description){
+        
+        Date date = new Date();
+        this.getComments().add(new Comment(id, email, subject, description, date));
+        writeFile(); 
+    }
+    
+    public void modify(int id, String email, String subject, String description){
+        Date date = new Date();
+        for (Comment comment : this.getComments()) {
+            if (comment.getIdComment() == id) {
+                comment.setEmail(email);
+                comment.setSubject(subject);
+                comment.setDescription(description);
+                comment.setCrationDate(date);
+                break;
+                
+            }
+        }
+        writeFile();  
+    }
+    
+    
+    public void delete(int index){
+        this.getComments().remove(index);
+        writeFile();
+        
+    }
 }
