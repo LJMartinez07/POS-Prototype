@@ -7,6 +7,7 @@ package restaurant;
 
 import com.restaurant.classes.Comment;
 import com.restaurant.classes.Employe;
+import com.restaurant.classes.Table;
 import com.restaurant.classes.User;
 import static com.restaurant.utilities.Hash.getMD5;
 import java.text.ParseException;
@@ -23,6 +24,7 @@ public class Main {
     static User user = new User();
     static Employe emp = new Employe();
     static Comment comment = new Comment();
+    static Table table = new Table();
     public static void createFile(){
         /*user.createFile();
         emp.createFile();*/
@@ -52,6 +54,7 @@ public class Main {
         emp.validateFile();
         user.validateFile();
         comment.validateFile();
+        table.validateFile();
     }
     public static void main(String[] args){
         

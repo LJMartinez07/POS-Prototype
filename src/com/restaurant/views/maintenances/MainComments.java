@@ -45,9 +45,8 @@ public class MainComments extends javax.swing.JInternalFrame {
       
         try {
             if (!this.txt_id.getText().isEmpty()) {
-                 id =Integer.parseInt( this.txt_id.getText());
-                
-         }
+                 id =Integer.parseInt( this.txt_id.getText());   
+            }
              
           for (Comment comment : this.cm.getComments()) {
               if (comment.getIdComment() == id) {
@@ -183,8 +182,9 @@ public class MainComments extends javax.swing.JInternalFrame {
                             .addComponent(txt_id)
                             .addGroup(HeaderLayout.createSequentialGroup()
                                 .addComponent(btn_Modify)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_delete)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_delete)
+                                .addGap(0, 4, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)

@@ -137,6 +137,12 @@ public class RegUser extends javax.swing.JDialog {
 
         jLabel3.setText("Contraseña");
 
+        txt_Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_PasswordActionPerformed(evt);
+            }
+        });
+
         cbx_LevelAcccess.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"0", "1"}));
         cbx_LevelAcccess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,6 +307,10 @@ public class RegUser extends javax.swing.JDialog {
         addEmploye.setLocationRelativeTo(null);
         addEmploye.setVisible(true);        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txt_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_PasswordActionPerformed
 
   
     // Variables declaration - do not modify//GEN-BEGIN:variables

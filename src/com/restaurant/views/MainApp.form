@@ -29,6 +29,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="De Mesa"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maintanceTableActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="maintanceCustomers">
               <Properties>

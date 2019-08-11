@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import restaurant.Main;
+
 
 /**
  *
@@ -206,6 +206,43 @@ public class Employe extends Person implements FileActions{
         }
       
     }
+    
+    public void add(int IdEmploye, int KindOfEmploye, String Picture, double Balance, double PorcentBalance, int Available, String Name, String LastName1, String LastName2, String Gender, String Adress, String Telephone, String Phone, String Cedula){
+        Date date = new Date();
+        this.getEmployees().add(new Employe(IdEmploye, KindOfEmploye, Picture, Balance, PorcentBalance, Available, Name, LastName1, LastName2, Gender, Adress, Telephone, Phone, Cedula, date));
+        writeFile();
+       
+    }
+    
+    public void modify(int id, int kindOfEmploye, double balance, double balanceP, String name, String lastName1, String lastName2, String gender, String address, String telephone, String phone, String cedula ){
+        
+        // Employe employe  = this.getEmployees().get(index);
+        for (Employe employee : this.getEmployees()) {
+              if (employee.getIdEmploye()== id) {
+                employee.setKindOfEmploye(kindOfEmploye);
+                employee.setBalance(balance);
+                employee.setPorcentBalance(balanceP);           
+                employee.setName(name);
+                employee.setLastName1(lastName1);
+                employee.setLastName2(lastName2);
+                employee.setGender(gender);
+                employee.setAdress(address);
+                employee.setTelephone(telephone);
+                employee.setPhone(phone);
+                employee.setCedula(cedula);
+                
+                break;  
+            }
+        }
+        writeFile();  
+    }
+    
+    public void delete(int index){
+        this.getEmployees().remove(index);
+        writeFile();
+    }
+
+    
     
     
 }

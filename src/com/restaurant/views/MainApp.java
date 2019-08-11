@@ -7,10 +7,8 @@ package com.restaurant.views;
 
 import com.restaurant.views.maintenances.MainComments;
 import com.restaurant.views.maintenances.MainEmployees;
+import com.restaurant.views.maintenances.MainTables;
 import com.restaurant.views.maintenances.MainUsers;
-import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +22,7 @@ public class MainApp extends javax.swing.JFrame {
     private MainUsers regUser;
     private MainEmployees regEmployees;
     private MainComments regComments;
+    private MainTables regTables;
     public MainApp() {
         initComponents();
     }
@@ -89,6 +88,11 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.add(maintanceComments);
 
         maintanceTable.setText("De Mesa");
+        maintanceTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceTableActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceTable);
 
         maintanceCustomers.setText("De Clientes");
@@ -182,6 +186,13 @@ public class MainApp extends javax.swing.JFrame {
         this.DesktopPane.add(regComments);
         regComments.show();
     }//GEN-LAST:event_maintanceCommentsActionPerformed
+
+    private void maintanceTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceTableActionPerformed
+       regTables = new MainTables();
+       
+        this.DesktopPane.add(regTables);
+        regTables.show();
+    }//GEN-LAST:event_maintanceTableActionPerformed
 
     
 
