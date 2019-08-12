@@ -53,10 +53,21 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="De Tipo de Productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maintanceKindsOfProductsActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="maintanceProducts">
               <Properties>
                 <Property name="text" type="java.lang.String" value="De Productos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maintanceProductsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="maintancereservation">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="De Reserva"/>
               </Properties>
             </MenuItem>
           </SubComponents>

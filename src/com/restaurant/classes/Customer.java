@@ -64,7 +64,7 @@ public class Customer extends Person implements FileActions{
 
     @Override
     public void createFile() {
-          File file = new File(this.fileName);
+        File file = new File(this.fileName);
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -73,8 +73,6 @@ public class Customer extends Person implements FileActions{
                 System.out.println("Error to create 'Customer.txt'");
             }
         }
-        
-   
     }
 
     @Override

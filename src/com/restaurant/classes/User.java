@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 import com.restaurant.utilities.FileActions;
-import restaurant.Main;
-
 /**
  *
  * @author Luis
@@ -177,7 +175,7 @@ public class User extends Employe implements FileActions{
    
     @Override
     public void createFile() {
-     File file = new File(this.fileName);
+        File file = new File(this.fileName);
         if (!file.exists()) {
             try {
                 file.createNewFile();

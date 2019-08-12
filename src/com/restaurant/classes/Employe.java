@@ -216,7 +216,7 @@ public class Employe extends Person implements FileActions{
     
     public void modify(int id, int kindOfEmploye, double balance, double balanceP, String name, String lastName1, String lastName2, String gender, String address, String telephone, String phone, String cedula ){
         
-        // Employe employe  = this.getEmployees().get(index);
+        
         for (Employe employee : this.getEmployees()) {
               if (employee.getIdEmploye()== id) {
                 employee.setKindOfEmploye(kindOfEmploye);

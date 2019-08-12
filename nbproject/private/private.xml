@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/views/maintenances/MainComments.java</file>
-            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/classes/Comment.java</file>
-            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/views/Login.java</file>
+            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/views/maintenances/MainEmployees.java</file>
+            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/views/MainApp.java</file>
+            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/views/maintenances/MainCustomers.java</file>
+            <file>file:/C:/Users/Luis/Documents/NetBeansProjects/Restaurant/src/com/restaurant/classes/Customer.java</file>
         </group>
     </open-files>
 </project-private>

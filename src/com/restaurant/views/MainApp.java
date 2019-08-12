@@ -8,6 +8,8 @@ package com.restaurant.views;
 import com.restaurant.views.maintenances.MainComments;
 import com.restaurant.views.maintenances.MainCustomers;
 import com.restaurant.views.maintenances.MainEmployees;
+import com.restaurant.views.maintenances.MainKindsOfProducts;
+import com.restaurant.views.maintenances.MainProducts;
 import com.restaurant.views.maintenances.MainTables;
 import com.restaurant.views.maintenances.MainUsers;
 
@@ -25,6 +27,8 @@ public class MainApp extends javax.swing.JFrame {
     private MainComments regComments;
     private MainTables regTables;
     private MainCustomers regCustomers;
+    private MainProducts regProducts;
+    private MainKindsOfProducts regKinds;
     public MainApp() {
         initComponents();
     }
@@ -48,6 +52,7 @@ public class MainApp extends javax.swing.JFrame {
         maintanceEmployees = new javax.swing.JMenuItem();
         maintanceKindsOfProducts = new javax.swing.JMenuItem();
         maintanceProducts = new javax.swing.JMenuItem();
+        maintancereservation = new javax.swing.JMenuItem();
         movements = new javax.swing.JMenu();
         movementOrders = new javax.swing.JMenuItem();
         movementProducts = new javax.swing.JMenuItem();
@@ -114,10 +119,23 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.add(maintanceEmployees);
 
         maintanceKindsOfProducts.setText("De Tipo de Productos");
+        maintanceKindsOfProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceKindsOfProductsActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceKindsOfProducts);
 
         maintanceProducts.setText("De Productos");
+        maintanceProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintanceProductsActionPerformed(evt);
+            }
+        });
         maintenances.add(maintanceProducts);
+
+        maintancereservation.setText("De Reserva");
+        maintenances.add(maintancereservation);
 
         jMenuBar1.add(maintenances);
 
@@ -208,6 +226,20 @@ public class MainApp extends javax.swing.JFrame {
         regCustomers.show();
     }//GEN-LAST:event_maintanceCustomersActionPerformed
 
+    private void maintanceProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceProductsActionPerformed
+        regProducts = new MainProducts();
+        this.DesktopPane.add(regProducts);
+        regProducts.show();
+        
+    }//GEN-LAST:event_maintanceProductsActionPerformed
+
+    private void maintanceKindsOfProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceKindsOfProductsActionPerformed
+      
+        regKinds = new MainKindsOfProducts();
+        this.DesktopPane.add(regKinds);
+        regKinds.show();
+    }//GEN-LAST:event_maintanceKindsOfProductsActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -225,6 +257,7 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JMenuItem maintanceProducts;
     private javax.swing.JMenuItem maintanceTable;
     private javax.swing.JMenuItem maintanceUsers;
+    private javax.swing.JMenuItem maintancereservation;
     private javax.swing.JMenu maintenances;
     private javax.swing.JMenuItem movementOrders;
     private javax.swing.JMenuItem movementProducts;
