@@ -5,6 +5,7 @@
  */
 package com.restaurant.tablemodels;
 
+import com.restaurant.classes.KindProduct;
 import com.restaurant.classes.Product;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,8 @@ public class TableModelsProducts {
        
     public DefaultTableModel initTable(JTable table){
         Product product = new Product();
+        KindProduct kp = new KindProduct();
+        
        
         product.readFile();
         DefaultTableModel Model;
@@ -30,7 +33,7 @@ public class TableModelsProducts {
             
             register[0] = String.valueOf(product1.getIdProduct());
             register[1] = product1.getDescription();
-            register[2] = String.valueOf(product1.getKindOfProduct());
+            register[2] =  kp.NameKind(product1.getKindOfProduct());
             register[3] = String.valueOf(product1.getPrice());
             register[4] = String.valueOf(product1.getStock());
             register[5] = String.valueOf(product1.isITBIS());

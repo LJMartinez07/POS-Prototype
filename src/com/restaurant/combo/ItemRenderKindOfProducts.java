@@ -6,6 +6,7 @@
 package com.restaurant.combo;
 
 import com.restaurant.classes.Employe;
+import com.restaurant.classes.KindProduct;
 import java.awt.Component;
 import javax.swing.JList;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
@@ -24,17 +25,14 @@ public class ItemRenderKindOfProducts extends BasicComboBoxRenderer {
                 isSelected, cellHasFocus);
             if (value != null)
             {
-                 item = (Employe)value;
+                KindProduct item = (KindProduct)value;
                 setText( item.getName() );
             }
- 
             if (index == -1)
             {
-                Employe item = (Employe)value;
+                KindProduct item = (KindProduct)value;
                 setText( "" + item.getName());
             }
- 
- 
             return this;
         }
     

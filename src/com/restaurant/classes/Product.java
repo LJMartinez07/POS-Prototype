@@ -171,15 +171,14 @@ public class Product implements FileActions{
     }
     
     public void modify(int IdProduct, int KindOfProduct, String Description, double Price, double Stock, boolean ITBIS){
-        
         for (Product product : this.getProducts()) {
-            
             if (product.getIdProduct() == IdProduct) {
-                this.setKindOfProduct(KindOfProduct);
-                this.setDescription(Description);
-                this.setPrice(Price);
-                this.setStock(Stock);
-                this.setITBIS(ITBIS);
+                
+                product.setKindOfProduct(KindOfProduct);
+                product.setDescription(Description);
+                product.setPrice(Price);
+                product.setStock(Stock);
+                product.setITBIS(ITBIS);
                 break; 
             }
         }

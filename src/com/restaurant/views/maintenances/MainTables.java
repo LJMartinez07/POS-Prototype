@@ -111,6 +111,7 @@ public class MainTables extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Mesas");
 
         jLabel1.setText("Id");
 
@@ -229,10 +230,11 @@ public class MainTables extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(txt_cantComersales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Add)
-                    .addComponent(btn_Modify)
-                    .addComponent(btn_Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Delete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_Add)
+                        .addComponent(btn_Modify)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -317,7 +319,6 @@ public class MainTables extends javax.swing.JInternalFrame {
         if (Integer.parseInt(this.txt_maxComersales.getText()) < Integer.parseInt(this.txt_cantComersales.getText())) {
             JOptionPane.showMessageDialog(this, "La cantidad debe ser menor o igual que la maxima", "Upps..", JOptionPane.ERROR_MESSAGE); 
             return;
-            
         }
         this.tb.modify(Integer.parseInt(this.txt_id.getText()), Integer.parseInt(this.txt_maxComersales.getText()), Integer.parseInt(this.txt_cantComersales.getText()), Integer.parseInt(this.txt_numTable.getText()), this.jr_true.isSelected());
         this.tmt.initTable(tb_tables);

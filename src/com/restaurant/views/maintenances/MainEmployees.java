@@ -101,7 +101,6 @@ public class MainEmployees extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         Header = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -140,7 +139,7 @@ public class MainEmployees extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Registro de Empleados");
+        setTitle("Empleados");
 
         jLabel11.setText("Celular");
 

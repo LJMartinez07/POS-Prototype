@@ -41,8 +41,6 @@ public class MainComments extends javax.swing.JInternalFrame {
     public  void Search(){
         int id = 0;
         boolean found = false;
-        
-      
         try {
             if (!this.txt_id.getText().isEmpty()) {
                  id =Integer.parseInt( this.txt_id.getText());   
@@ -71,17 +69,7 @@ public class MainComments extends javax.swing.JInternalFrame {
                 this.txt_subject.setText("");
                 this.txt_description.setText("");
             
-        }
-         
-            
-        
-         
-         
-                
-                
-            
-
-       
+        }  
        
     }
         
@@ -115,7 +103,7 @@ public class MainComments extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Registro de Comentarios");
+        setTitle("Comentarios");
 
         Header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

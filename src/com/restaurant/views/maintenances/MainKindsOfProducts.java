@@ -7,6 +7,7 @@ package com.restaurant.views.maintenances;
 
 import com.restaurant.classes.KindProduct;
 import com.restaurant.tablemodels.TableModelsKindOfProducts;
+import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -28,8 +29,6 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
         this.kindOfProduct.readFile();
         this.tmk.initTable(jt_kind);
     }
-
-    
     public void clear(){
         this.txt_id.setText("");
         this.txt_name.setText("");
@@ -56,7 +55,8 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
                 }
             }
         } catch (NumberFormatException e) {
-            System.out.println(e);
+             JOptionPane.showMessageDialog(this, "Solo valores numericos", "Error!", JOptionPane.ERROR_MESSAGE);
+           
         }
         
         if (!found) {
@@ -92,6 +92,7 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Tipos de Productos");
 
         jLabel1.setText("Id");
 
@@ -118,7 +119,7 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_Delete.setText("Borrar");
+        btn_Delete.setText("Eliminar");
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DeleteActionPerformed(evt);
@@ -131,22 +132,22 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_Add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Modify)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Delete)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +209,9 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
-        if (this.txt_id.getText().isEmpty() || this.txt_name.getText().isEmpty()) {
+        
+        try {
+            if (this.txt_id.getText().isEmpty() || this.txt_name.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Campos en Blanco", "Mensaje", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -217,20 +220,31 @@ public class MainKindsOfProducts extends javax.swing.JInternalFrame {
             this.tmk.initTable(jt_kind);
         
         JOptionPane.showMessageDialog(this, "Agregado.", "Nice", JOptionPane.INFORMATION_MESSAGE);
+        
+        MainProducts.setComboKind();
         clear();
+            
+        } catch (HeadlessException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, e, "Opss..", JOptionPane.ERROR_MESSAGE);
+        }
+        
+       
     }//GEN-LAST:event_btn_AddActionPerformed
 
     private void btn_ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModifyActionPerformed
-       this.kindOfProduct.modify(Integer.parseInt(this.txt_id.getText()), this.txt_name.getText());
+        this.kindOfProduct.modify(Integer.parseInt(this.txt_id.getText()), this.txt_name.getText());
         this.tmk.initTable(jt_kind);
         JOptionPane.showMessageDialog(new JFrame(), "Modificado.", "Nice",
         JOptionPane.INFORMATION_MESSAGE);
+        
+        
     }//GEN-LAST:event_btn_ModifyActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
          try {
             this.kindOfProduct.delete(this.jt_kind.getSelectedRow());
             this.tmk.initTable(jt_kind);
+            MainProducts.setComboKind();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(new JFrame(), "Select a row PLEASE.", "Upss..",
         JOptionPane.INFORMATION_MESSAGE);

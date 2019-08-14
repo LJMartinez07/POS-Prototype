@@ -24,7 +24,7 @@ public class KindProduct implements FileActions{
     
     private int IdKindOfProduct;
     private String Name,
-            fileName = "Files/KindOfProduct";
+            fileName = "Files/KindProduct.txt";
     
     private ArrayList<KindProduct> kindsProducts = new ArrayList<>();
 
@@ -129,6 +129,18 @@ public class KindProduct implements FileActions{
     public void add(int id, String name){
         this.getKindsProducts().add(new KindProduct(id, name));
         writeFile();
+        
+    }
+    
+    public String NameKind(int id){
+        
+        readFile();
+        for (KindProduct kindsProduct : this.getKindsProducts()) {
+            if (id == kindsProduct.getIdKindOfProduct()) 
+                return kindsProduct.getName();
+      
+        }
+            return null;
         
     }
     

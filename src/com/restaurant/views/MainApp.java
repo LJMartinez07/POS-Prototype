@@ -32,7 +32,7 @@ public class MainApp extends javax.swing.JFrame {
     public MainApp() {
         initComponents();
     }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -189,17 +189,15 @@ public class MainApp extends javax.swing.JFrame {
 
     private void maintanceUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceUsersActionPerformed
         regUser = new MainUsers();
-        this.DesktopPane.add(regUser);
+        MainApp.DesktopPane.add(regUser);
         regUser.show();
         
         
     }//GEN-LAST:event_maintanceUsersActionPerformed
 
     private void maintanceEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceEmployeesActionPerformed
-        regEmployees = new MainEmployees();
-     
-        
-        this.DesktopPane.add(regEmployees);
+        regEmployees = new MainEmployees();        
+        MainApp.DesktopPane.add(regEmployees);
         regEmployees.show();
         
     }//GEN-LAST:event_maintanceEmployeesActionPerformed
@@ -208,27 +206,27 @@ public class MainApp extends javax.swing.JFrame {
        regComments = new MainComments();
      
         
-        this.DesktopPane.add(regComments);
+        MainApp.DesktopPane.add(regComments);
         regComments.show();
     }//GEN-LAST:event_maintanceCommentsActionPerformed
 
     private void maintanceTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceTableActionPerformed
        regTables = new MainTables();
        
-        this.DesktopPane.add(regTables);
+        MainApp.DesktopPane.add(regTables);
         regTables.show();
     }//GEN-LAST:event_maintanceTableActionPerformed
 
     private void maintanceCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceCustomersActionPerformed
         regCustomers = new MainCustomers();
        
-        this.DesktopPane.add(regCustomers);
+        MainApp.DesktopPane.add(regCustomers);
         regCustomers.show();
     }//GEN-LAST:event_maintanceCustomersActionPerformed
 
     private void maintanceProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceProductsActionPerformed
         regProducts = new MainProducts();
-        this.DesktopPane.add(regProducts);
+        MainApp.DesktopPane.add(regProducts);
         regProducts.show();
         
     }//GEN-LAST:event_maintanceProductsActionPerformed
@@ -236,14 +234,19 @@ public class MainApp extends javax.swing.JFrame {
     private void maintanceKindsOfProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintanceKindsOfProductsActionPerformed
       
         regKinds = new MainKindsOfProducts();
-        this.DesktopPane.add(regKinds);
+        MainApp.DesktopPane.add(regKinds);
         regKinds.show();
     }//GEN-LAST:event_maintanceKindsOfProductsActionPerformed
 
+  
+   
+    
+    
+  
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane DesktopPane;
+    public static javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
