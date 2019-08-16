@@ -211,12 +211,34 @@ public class User extends Employe implements FileActions{
     }
 
    
-    public void add(String username, String password, String email, int access, int fk ){
+    public void add(int id,String username, String password, String email, int access, int fk ){
         
-        readFile();
-        this.getUsers().add(new User(1, username, getMD5(password), email, access, fk));
+       
+        this.getUsers().add(new User(id, username, getMD5(password), email, access, fk));
         writeFile();
         
+    }
+    
+    public void modify(int id, String username, String password, String email, int accessLevel){
+        
+        for (User user : this.getUsers()) {
+            if (user.getIdUser() == id) {
+                user.setUserName(username);
+                user.setPassword(password);
+                user.setEmail(email);
+                user.setAccessLevel(accessLevel);
+                break;
+                
+                
+            }
+        }
+        writeFile();
+        
+    }
+    @Override
+    public void delete(int index){
+        this.getUsers().remove(index);
+        writeFile();
     }
 
     

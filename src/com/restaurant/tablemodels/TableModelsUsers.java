@@ -16,8 +16,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableModelsUsers {
     
-    String[] title = {"Usuario", "Email", "Nombre", "Apellido P", "Apellido M", "Acceso"};
-    String[] register = new String[6];
+    String[] title = {"Id" ,"Usuario", "Email", "Nombre", "Apellido P", "Apellido M", "Acceso"};
+    String[] register = new String[7];
     
        
       public DefaultTableModel initTable(JTable table){
@@ -30,18 +30,19 @@ public class TableModelsUsers {
         modelo = new DefaultTableModel(null, title);
         
           for (int i = 0; i < user.getUsers().size(); i++) {
-            register[0] = user.getUsers().get(i).getUserName();
-            register[1] = user.getUsers().get(i).getEmail();
-            register[5] = String.valueOf(user.getUsers().get(i).getAccessLevel()); 
+              register[0] = String.valueOf( user.getUsers().get(i).getIdUser());
+            register[1] = user.getUsers().get(i).getUserName();
+            register[2] = user.getUsers().get(i).getEmail();
+            register[6] = String.valueOf(user.getUsers().get(i).getAccessLevel()); 
             
               for (Employe employee : employe.getEmployees()) {
                   
                   if (employee.getIdEmploye() == user.getUsers().get(i).getFkEmploye() && employee.getAvailable() == 1) {
-                      System.out.println("Lo enconte");
+                     
                       
-                      register[2] = employee.getName();
-                      register[3] = employee.getLastName1();
-                      register[4] = employee.getLastName2();
+                      register[3] = employee.getName();
+                      register[4] = employee.getLastName1();
+                      register[5] = employee.getLastName2();
                   }
               }
                modelo.addRow(register);

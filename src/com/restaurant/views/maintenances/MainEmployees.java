@@ -189,6 +189,11 @@ public class MainEmployees extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Id");
 
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
         txt_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_idKeyReleased(evt);
@@ -439,6 +444,10 @@ public class MainEmployees extends javax.swing.JInternalFrame {
         JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btn_DeleteActionPerformed
+
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -93,7 +93,7 @@ public class Table implements FileActions{
 
     @Override
     public void createFile() {
-         File file = new File(this.fileName);
+        File file = new File(this.fileName);
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -149,7 +149,7 @@ public class Table implements FileActions{
 
     @Override
     public void validateFile() {
-         File file = new File(this.fileName);
+        File file = new File(this.fileName);
         if (!file.exists()) {
           
             this.createFile();

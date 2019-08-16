@@ -119,7 +119,7 @@ public class Employe extends Person implements FileActions{
         if (!file.exists()) {
             Date date = new Date();
             this.createFile();
-            this.getEmployees().add(new Employe(1, 1, "NO PICTURE", 0, 0, 0, "Luis", "Martinez", "", "M", "santiago", "809-570-7176", "809-502-2278", "44544564", date));
+            this.getEmployees().add(new Employe(1, 1, "NO PICTURE", 0, 0, 1, "Luis", "Martinez", "", "M", "santiago", "809-570-7176", "809-502-2278", "44544564", date));
             this.writeFile();
             System.out.println("Default Employe has been created");
           

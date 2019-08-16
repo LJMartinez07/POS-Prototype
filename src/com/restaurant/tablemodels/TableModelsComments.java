@@ -6,7 +6,6 @@
 package com.restaurant.tablemodels;
 
 import com.restaurant.classes.Comment;
-import com.restaurant.classes.Employe;
 import java.text.SimpleDateFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

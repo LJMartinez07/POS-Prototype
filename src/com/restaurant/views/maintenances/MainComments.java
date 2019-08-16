@@ -278,12 +278,12 @@ public class MainComments extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_ModifyActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        System.out.println(this.tb_Commnets.getSelectedRow());
+        
         try {
             cm.delete(this.tb_Commnets.getSelectedRow());
             this.tmc.initTable(tb_Commnets);
         } catch (Exception e) {
-              JOptionPane.showMessageDialog(new JFrame(), "Select a row PLEASE.", "Upss..",
+              JOptionPane.showMessageDialog(new JFrame(), e, "Upss..",
         JOptionPane.INFORMATION_MESSAGE);
         }
         
