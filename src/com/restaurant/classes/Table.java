@@ -25,21 +25,31 @@ public class Table implements FileActions{
     private int IdTable,
             MaxComersales,
             CantComersales,
-            NumTables;
+            NumTable;
     private String  fileName="Files/Table.txt";
     private boolean state;
     
     private ArrayList<Table> Tables = new ArrayList<>();
 
-    public Table() {
-    }
-    public Table(int IdTable, int MaxComersales, int CantComersales, int NumTables, boolean state) {
+    
+    public Table(int IdTable, int MaxComersales, int CantComersales, int NumTable, boolean state) {
         this.IdTable = IdTable;
         this.MaxComersales = MaxComersales;
         this.CantComersales = CantComersales;
-        this.NumTables = NumTables;
+        this.NumTable = NumTable;
         this.state = state;
     }
+
+    public Table(int IdTable, int NumTable) {
+        this.IdTable = IdTable;
+        this.NumTable = NumTable;
+    }
+
+    
+    public Table() {
+    }
+
+   
 
     public int getIdTable() {
         return IdTable;
@@ -65,12 +75,12 @@ public class Table implements FileActions{
         this.CantComersales = CantComersales;
     }
 
-    public int getNumTables() {
-        return NumTables;
+    public int getNumTable() {
+        return NumTable;
     }
 
-    public void setNumTables(int NumTables) {
-        this.NumTables = NumTables;
+    public void setNumTable(int NumTable) {
+        this.NumTable = NumTable;
     }
 
     public boolean isState() {
@@ -88,8 +98,8 @@ public class Table implements FileActions{
     public void setTables(ArrayList<Table> Tables) {
         this.Tables = Tables;
     }
-    
-    
+
+   
 
     @Override
     public void createFile() {
@@ -113,7 +123,7 @@ public class Table implements FileActions{
             for (int i=0;i<size;i++) {
                 Table str = this.getTables().get(i);
                  
-                writer.write(str.getIdTable()+","+str.getMaxComersales()+","+str.getCantComersales()+","+str.isState()+","+str.getNumTables());
+                writer.write(str.getIdTable()+","+str.getMaxComersales()+","+str.getCantComersales()+","+str.isState()+","+str.getNumTable());
                 if(i < size-1)
                     writer.write("\n");
             }
@@ -136,9 +146,9 @@ public class Table implements FileActions{
                 this.setMaxComersales(x.nextInt());
                 this.setCantComersales(x.nextInt());
                 this.setState(x.nextBoolean());
-                this.setNumTables(x.nextInt());
+                this.setNumTable(x.nextInt());
 
-                this.getTables().add(new Table(this.getIdTable(), this.getMaxComersales(), this.getCantComersales(), this.getNumTables(), this.isState()));
+                this.getTables().add(new Table(this.getIdTable(), this.getMaxComersales(), this.getCantComersales(), this.getNumTable(), this.isState()));
             }
         } catch (FileNotFoundException e) {
             System.out.println("File 'Table.txt' not found read method");
@@ -153,7 +163,7 @@ public class Table implements FileActions{
         if (!file.exists()) {
           
             this.createFile();
-            this.getTables().add(new Table(1, 5, 0, 1, false));
+            this.getTables().add(new Table(1, 5, 0, 1, true));
             this.writeFile();
             System.out.println("Default Employe has been created");
           
@@ -168,13 +178,13 @@ public class Table implements FileActions{
     }
     
     
-    public void modify(int IdTable, int MaxComersales, int CantComersales, int NumTables, boolean state){
+    public void modify(int IdTable, int MaxComersales, int CantComersales, int NumTable, boolean state){
         
         for (Table table : this.getTables()) {
             if (table.getIdTable() == IdTable) {
                 table.setCantComersales(CantComersales);
                 table.setMaxComersales(MaxComersales);
-                table.setNumTables(NumTables);
+                table.setNumTable(NumTable);
                 table.setState(state);
                 break;
                 

@@ -45,37 +45,19 @@ public class MainUsers extends javax.swing.JInternalFrame {
         this.setComboEmploye();
     }
     
-      private void setComboEmploye(){
-        DefaultComboBoxModel value;
-            
+     private void setComboEmploye(){
+        DefaultComboBoxModel value;   
         value =new DefaultComboBoxModel();
         cbx_Employees.setModel(value);
-         
-     
-        
         for (int i = 0; i < this.emp.getEmployees().size(); i++) {
                 Employe str = this.emp.getEmployees().get(i);
-                
                 if (str.getAvailable() == 0)
-                    value.addElement(new Employe(str.getIdEmploye(), str.getName()));
-                    
-               
-        }
-        
-        
-     
-        
-     
-        
-         
+                    value.addElement(new Employe(str.getIdEmploye(), str.getName()));    
+        } 
         if (this.emp.getEmployees().size()>0) {
-          
             if (value.getSize() == 0) {
-                
-                 value.addElement( new Employe(0,  "Empty") );    
+                value.addElement( new Employe(0,  "Empty") );    
             }
-            
-            
         }
         cbx_Employees.setRenderer(new ItemRenderEmploye());
     }

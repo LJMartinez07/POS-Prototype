@@ -7,6 +7,7 @@ package com.restaurant.views.maintenances;
 
 import com.restaurant.classes.Table;
 import com.restaurant.tablemodels.TableModelsTables;
+import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -53,7 +54,7 @@ public class MainTables extends javax.swing.JInternalFrame {
                 this.btn_Modify.setEnabled(true);
                 this.txt_cantComersales.setText(String.valueOf(table.getCantComersales()));
                 this.txt_maxComersales.setText(String.valueOf(table.getMaxComersales()));
-                this.txt_numTable.setText(String.valueOf(table.getNumTables()));
+                this.txt_numTable.setText(String.valueOf(table.getNumTable()));
                 this.jr_true.setSelected(table.isState());
                 found = true;
                 break;
@@ -286,17 +287,40 @@ public class MainTables extends javax.swing.JInternalFrame {
 
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
 
-         if (this.txt_id.getText().isEmpty() || this.txt_maxComersales.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Campos en Blanco", "Mensaje", JOptionPane.ERROR_MESSAGE);            
-            return;
-        }
-        this.tb.add(Integer.parseInt(this.txt_id.getText()), Integer.parseInt(this.txt_maxComersales.getText()), 0, Integer.parseInt(this.txt_numTable.getText()));
-        
-        this.tmt.initTable(tb_tables);
-         JOptionPane.showMessageDialog(new JFrame(), "Guardado.", "Nice",
-        JOptionPane.INFORMATION_MESSAGE);
+        boolean found = false;
+        try {
+            if (this.txt_id.getText().isEmpty() || this.txt_maxComersales.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Campos en Blanco", "Mensaje", JOptionPane.ERROR_MESSAGE);            
+                return;
+            }
+            
+            for (Table table : this.tb.getTables()) {
+                if (table.getNumTable() == Integer.parseInt(this.txt_numTable.getText())) {
+                    found = true;
+                    break; 
+                }
+            }
+            
+            if (!found) {
+                this.tb.add(Integer.parseInt(this.txt_id.getText()), Integer.parseInt(this.txt_maxComersales.getText()), 0, Integer.parseInt(this.txt_numTable.getText()));
+                this.tmt.initTable(tb_tables);
+                JOptionPane.showMessageDialog(new JFrame(), "Guardado.", "Nice",
+                JOptionPane.INFORMATION_MESSAGE);
+                clear();
+                
+                MainReservation.setComboTable();
+            }else{
+                JOptionPane.showMessageDialog(new JFrame(), "El numero de mesa: "+this.txt_numTable.getText()+" esta ocupado" , "Opss..",
+             JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+           
 
-        clear();
+        
+        } catch (HeadlessException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(new JFrame(), e, "Opss..",
+            JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_AddActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed

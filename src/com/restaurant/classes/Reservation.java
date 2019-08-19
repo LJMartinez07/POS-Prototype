@@ -32,10 +32,16 @@ public class Reservation implements FileActions{
         this.IdReservation = IdReservation;
         this.IdCustomer = IdCustomer;
         this.IdTable = IdTable;
+  
         this.DateReservation = DateReservation;
         this.DropReservation = DropReservation;
         this.state = state;
         this.CurrentHour = CurrentHour;
+    }
+
+   
+    public Reservation() {
+        
     }
 
     public int getIdReservation() {
@@ -49,6 +55,8 @@ public class Reservation implements FileActions{
     public int getIdCustomer() {
         return IdCustomer;
     }
+
+   
 
     public void setIdCustomer(int IdCustomer) {
         this.IdCustomer = IdCustomer;
@@ -171,7 +179,8 @@ public class Reservation implements FileActions{
                 
                this.setState(x.nextBoolean());
                this.setCurrentHour(x.next());
-               this.getReservations().add(new Reservation(this.getIdReservation(),this.getIdCustomer(),this.getIdTable(),this.getDateReservation(),this.getDropReservation(),this.isState(),this.getCurrentHour()));
+               //this.setComersales(x.nextInt());
+               this.getReservations().add(new Reservation(this.getIdReservation(),this.getIdCustomer(),this.getIdTable(), this.getDateReservation(),this.getDropReservation(),this.isState(),this.getCurrentHour()));
             }
         } catch (FileNotFoundException e) {
             System.out.println("File 'Employe.txt' not found read method");
@@ -193,21 +202,24 @@ public class Reservation implements FileActions{
     
     }
     
-    public void add(int IdReservation, int IdCustomer, int IdTable, Date DateReservation, Date DropReservation, boolean state, String CurrentHour){
-        this.getReservations().add(new Reservation(IdReservation, IdCustomer, IdTable, DateReservation, DropReservation, state, CurrentHour));
+    public void add(int IdReservation, int IdCustomer, int IdTable, Date DateReservation, Date DropReservation, boolean state){
+        
+        Date  date = new Date();
+        this.getReservations().add(new Reservation(IdReservation, IdCustomer, IdTable, DateReservation, DropReservation, state, String.valueOf(date.getTime())));
         writeFile();
         
     }
     
-    public void modify(int IdReservation, int IdCustomer, int IdTable, Date DateReservation, Date DropReservation, boolean state, String CurrentHour){
+    public void modify(int IdReservation, int IdCustomer, int IdTable, Date DateReservation, Date DropReservation, boolean state){
         
        for (Reservation reservation : this.getReservations()) {
            if (reservation.getIdReservation() == IdReservation) {
                reservation.setIdTable(IdTable);
+              
                reservation.setDateReservation(DateReservation);
                reservation.setDropReservation(DropReservation);
                reservation.setState(state);
-               reservation.setCurrentHour(CurrentHour);
+               //reservation.setCurrentHour(CurrentHour);
                break;
                
                

@@ -5,7 +5,6 @@
  */
 package com.restaurant.tablemodels;
 
-import com.restaurant.classes.Employe;
 import com.restaurant.classes.Table;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableModelsTables {
     
-       String[] title = {"Id", "Max_Comersales", "Cant_Comersales", "Estatus", "Numero"};
+    String[] title = {"Id", "Max_Comersales", "Cant_Comersales", "Estatus", "Numero"};
     String[] register = new String[5];
     
        
@@ -33,7 +32,7 @@ public class TableModelsTables {
             register[1] = String.valueOf(table2.getMaxComersales());
             register[2] = String.valueOf(table2.getCantComersales());
             register[3] = table2.isState() == true ? "Activa" : "No Activa";
-            register[4] = String.valueOf(table2.getNumTables());
+            register[4] = String.valueOf(table2.getNumTable());
             Model.addRow(register);
         }
         

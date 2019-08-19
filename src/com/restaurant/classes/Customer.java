@@ -37,6 +37,12 @@ public class Customer extends Person implements FileActions{
         this.Email = Email;
     }
 
+    public Customer(int idCustomer, String name) {
+        super(name);
+        this.IdCustomer = idCustomer;
+       
+    }
+
     public int getIdCustomer() {
         return IdCustomer;
     }

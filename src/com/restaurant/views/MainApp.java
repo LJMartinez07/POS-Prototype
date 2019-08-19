@@ -10,6 +10,7 @@ import com.restaurant.views.maintenances.MainCustomers;
 import com.restaurant.views.maintenances.MainEmployees;
 import com.restaurant.views.maintenances.MainKindsOfProducts;
 import com.restaurant.views.maintenances.MainProducts;
+import com.restaurant.views.maintenances.MainReservation;
 import com.restaurant.views.maintenances.MainTables;
 import com.restaurant.views.maintenances.MainUsers;
 
@@ -29,6 +30,7 @@ public class MainApp extends javax.swing.JFrame {
     private MainCustomers regCustomers;
     private MainProducts regProducts;
     private MainKindsOfProducts regKinds;
+    private MainReservation regReservations;
     public MainApp() {
         initComponents();
     }
@@ -135,6 +137,11 @@ public class MainApp extends javax.swing.JFrame {
         maintenances.add(maintanceProducts);
 
         maintancereservation.setText("De Reserva");
+        maintancereservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintancereservationActionPerformed(evt);
+            }
+        });
         maintenances.add(maintancereservation);
 
         jMenuBar1.add(maintenances);
@@ -237,6 +244,15 @@ public class MainApp extends javax.swing.JFrame {
         MainApp.DesktopPane.add(regKinds);
         regKinds.show();
     }//GEN-LAST:event_maintanceKindsOfProductsActionPerformed
+
+    private void maintancereservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintancereservationActionPerformed
+
+        regReservations = new MainReservation();
+        MainApp.DesktopPane.add(regReservations);
+        regReservations.show();
+        
+        
+    }//GEN-LAST:event_maintancereservationActionPerformed
 
   
    

@@ -39,7 +39,6 @@ public class Person {
     
     public Person(String Name){
         this.Name = Name;
-        
     }
     public Person(){
         

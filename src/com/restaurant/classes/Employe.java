@@ -168,7 +168,6 @@ public class Employe extends Person implements FileActions{
     @Override
     public void readFile() {
         SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
-   
         try {
             x = new Scanner(new File(this.fileName));
             x.useDelimiter("[,\n]");

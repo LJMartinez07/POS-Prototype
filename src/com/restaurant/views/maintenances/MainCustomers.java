@@ -285,6 +285,7 @@ public class MainCustomers extends javax.swing.JInternalFrame {
         
         this.customer.add(Integer.parseInt(this.txt_id.getText()), this.txt_email.getText(), this.txt_name.getText(), this.txt_lastname.getText(), this.txt_lastname2.getText(), "", "", "", this.txt_phone.getText(), "");
         this.tmc.initTable(tb_customers);
+        MainReservation.setComboCustomer();
         JOptionPane.showMessageDialog(new JFrame(), "Agregado.", "Nice",
         JOptionPane.INFORMATION_MESSAGE);
         clear();

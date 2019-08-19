@@ -10,6 +10,7 @@ import com.restaurant.classes.Customer;
 import com.restaurant.classes.Employe;
 import com.restaurant.classes.KindProduct;
 import com.restaurant.classes.Product;
+import com.restaurant.classes.Reservation;
 import com.restaurant.classes.Table;
 import com.restaurant.classes.User;
 
@@ -28,6 +29,7 @@ public class Main {
     static Customer customer = new Customer();
     static Product product = new Product();
     static KindProduct kind = new KindProduct();
+    static Reservation reser = new Reservation();
     public static void createFile(){
         /*user.createFile();
         emp.createFile();*/
@@ -61,6 +63,7 @@ public class Main {
         customer.validateFile();
         product.validateFile();
         kind.validateFile();
+        reser.validateFile();
     }
     public static void main(String[] args){
         
