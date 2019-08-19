@@ -5,10 +5,17 @@
  */
 package com.restaurant.classes;
 
+import static com.restaurant.classes.User.x;
 import com.restaurant.utilities.FileActions;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -129,16 +136,59 @@ public class Order implements FileActions{
 
     @Override
     public void createFile() {
-    
+        File file = new File(this.fileName);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("'Order.txt' has been created successfully"); 
+            } catch (IOException e) {
+                System.out.println("Error to create 'Order.txt'");
+            }
+        }
     }
 
     @Override
     public void writeFile() {
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+   
+        try {
+            FileWriter writer = new FileWriter(this.fileName);
+            int size = this.getOrders().size();
+            for (int i=0;i<size;i++) {
+                Order str = this.getOrders().get(i);
+                String strDate= formatter.format(str.getOrderDate()); 
+                writer.write(str.getIdOrder()+","+str.getIdTable()+","+str.getIdCustomer()
+                        +","+strDate+","+str.getOrderValue()+","+str.getItbisValue()
+                        +","+str.getBalanceValue()+","+str.getDescription()+","+str.getDescription());
+
+                if(i < size-1)
+                    writer.write("\n");
+            }
+            writer.close();
+            
+        } catch (IOException e) {
+            System.out.println("File 'Order.txt' not found write method");
+        }
     
     }
 
     @Override
     public void readFile() {
+        SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            x = new Scanner(new File(this.fileName));
+            x.useDelimiter("[,\n]");
+            while(x.hasNext()){
+                try {
+                    this.getOrders().add(new Order(x.nextInt(), x.nextInt(), x.nextInt(), x.nextInt(), dateformat3.parse(x.next()), x.nextDouble(), x.nextDouble(), x.nextDouble(), x.next(), x.nextBoolean()));
+                } catch (ParseException e) {
+                    System.out.println(e);
+                }
+              }
+        } catch (FileNotFoundException e) {
+            System.out.println("File 'Order.txt' not found read method");
+        }
     
     }
 
@@ -164,10 +214,19 @@ public class Order implements FileActions{
     public void modify(int IdOrder, int IdEmploye, int IdTable, int IdCustomer, Date OrderDate, double OrderValue, double ItbisValue, double BalanceValue, String Description, boolean State){
         
         for (Order order : this.getOrders()) {
-            if (Id) {
+            if (IdOrder == order.getIdOrder()) {
+                order.setDescription(Description);
+                order.setIdEmploye(IdEmploye);
+                order.setIdTable(IdTable);
+                order.setOrderDate(OrderDate);
+                order.setOrderValue(OrderValue);
+                order.setItbisValue(ItbisValue);
+                order.setBalanceValue(BalanceValue);
+                order.setState(State);
                 
             }
         }
+        writeFile();
         
     }
     public void delete(int index){

@@ -125,14 +125,12 @@ public class Reservation implements FileActions{
                 System.out.println("Error to create 'Reservation.txt'");
             }
         }
-       
-    
     }
 
     @Override
     public void writeFile() {
     
-         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
    
         try {
             FileWriter writer = new FileWriter(this.fileName);

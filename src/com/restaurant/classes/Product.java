@@ -7,7 +7,6 @@ package com.restaurant.classes;
 
 import static com.restaurant.classes.User.x;
 import com.restaurant.utilities.FileActions;
-import static com.restaurant.utilities.Hash.getMD5;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
