@@ -82,8 +82,8 @@ public class MainProducts extends javax.swing.JInternalFrame {
     
     public static void setComboKind(){
         
-         KindProduct kp = new KindProduct();
-         kp.readFile();
+        KindProduct kp = new KindProduct();
+        kp.readFile();
          
         DefaultComboBoxModel value;
          value =new DefaultComboBoxModel();

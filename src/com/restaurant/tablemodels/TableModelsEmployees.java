@@ -6,6 +6,7 @@
 package com.restaurant.tablemodels;
 
 import com.restaurant.classes.Employe;
+import com.restaurant.classes.KindEmploye;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +21,8 @@ public class TableModelsEmployees {
        
     public DefaultTableModel initTable(JTable table){
         Employe employe = new Employe();
-       
+        KindEmploye ke = new KindEmploye();
+       ke.readFile();
         employe.readFile();
         DefaultTableModel Model;
          
@@ -30,7 +32,13 @@ public class TableModelsEmployees {
             register[0] = employee.getName();
             register[1] = employee.getLastName1();
             register[2] = employee.getLastName2();
-            register[3] = String.valueOf(employee.getKindOfEmploye());
+            for (KindEmploye kindEmploye : ke.getKindEmployes()) {
+                if (kindEmploye.getIdKindEmploye() == employee.getKindOfEmploye()) {
+                    register[3] = kindEmploye.getName();
+                    break;
+                }
+            }
+          
             register[4] = String.valueOf(employee.getBalance());
             register[5] = String.valueOf(employee.getPorcentBalance());
             

@@ -6,7 +6,11 @@
 package com.restaurant.views.maintenances;
 
 import com.restaurant.classes.Employe;
+import com.restaurant.classes.KindEmploye;
+import com.restaurant.combo.ItemRenderKindEmployes;
 import com.restaurant.tablemodels.TableModelsEmployees;
+import java.awt.HeadlessException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -28,6 +32,30 @@ public class MainEmployees extends javax.swing.JInternalFrame {
         this.emp = new Employe();
         this.emp.readFile();
         tme.initTable(tb_Employees);
+        setComboKindEmploye();
+    }
+    
+    
+    private void setComboKindEmploye(){
+        KindEmploye ke = new KindEmploye();
+        ke.readFile();
+         
+        DefaultComboBoxModel value;
+         value =new DefaultComboBoxModel();
+        
+      
+        jb_kind.setModel(value);
+
+        for (KindEmploye kindEmploye : ke.getKindEmployes()) {
+            value.addElement(new KindEmploye(kindEmploye.getIdKindEmploye(), kindEmploye.getName()));
+                           
+        }
+      
+         if (value.getSize() == 0) {
+                
+                 value.addElement( new KindEmploye(0,  "Empty") );    
+            } 
+        jb_kind.setRenderer(new ItemRenderKindEmployes());
     }
 
     
@@ -414,7 +442,7 @@ public class MainEmployees extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_idKeyReleased
 
     private void btn_ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModifyActionPerformed
-        this.emp.modify(Integer.parseInt(this.txt_id.getText()) , 1, Double.parseDouble(this.txt_balance.getText()), Double.parseDouble(this.txt_balanceP.getText()), this.txt_name.getText(), this.txt_last1.getText(), this.txt_last2.getText(), this.jb_gender.getSelectedItem().toString(), this.txt_address.getText(), this.txt_telephone.getText(), this.txt_phone.getText(), this.txt_cedula.getText());
+        this.emp.modify(Integer.parseInt(this.txt_id.getText()) , ((KindEmploye)this.jb_kind.getSelectedItem() ).getIdKindEmploye(), Double.parseDouble(this.txt_balance.getText()), Double.parseDouble(this.txt_balanceP.getText()), this.txt_name.getText(), this.txt_last1.getText(), this.txt_last2.getText(), this.jb_gender.getSelectedItem().toString(), this.txt_address.getText(), this.txt_telephone.getText(), this.txt_phone.getText(), this.txt_cedula.getText());
         this.tme.initTable(tb_Employees);
           JOptionPane.showMessageDialog(new JFrame(), "Modificado.", "Nice",
         JOptionPane.INFORMATION_MESSAGE);
@@ -423,15 +451,22 @@ public class MainEmployees extends javax.swing.JInternalFrame {
 
     private void btn_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddActionPerformed
 
-        if (this.txt_name.getText().isEmpty() || this.txt_last1.getText().isEmpty() ||  this.txt_cedula.getText().isEmpty() || this.txt_telephone.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Campos en Blanco", "Mensaje", JOptionPane.ERROR_MESSAGE);
-            return;
+        try {
+            if (this.txt_name.getText().isEmpty() || this.txt_last1.getText().isEmpty() ||  this.txt_cedula.getText().isEmpty() || this.txt_telephone.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Campos en Blanco", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            this.emp.add(Integer.parseInt(this.txt_id.getText()) , ((KindEmploye)this.jb_kind.getSelectedItem()).getIdKindEmploye() , "", Double.parseDouble(this.txt_balance.getText()), Double.parseDouble(this.txt_balanceP.getText()),0 ,this.txt_name.getText(), this.txt_last1.getText(), this.txt_last2.getText(), this.jb_gender.getSelectedItem().toString(), this.txt_address.getText(), this.txt_telephone.getText(), this.txt_phone.getText(), this.txt_cedula.getText());
+            this.tme.initTable(tb_Employees);
+            JOptionPane.showMessageDialog(new JFrame(), "Agregado.", "Nice",
+            JOptionPane.INFORMATION_MESSAGE);
+            clear(); 
+            
+        } catch (HeadlessException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(new JFrame(), e, "Opss..",
+            JOptionPane.ERROR_MESSAGE);
         }
-        this.emp.add(Integer.parseInt(this.txt_id.getText()) , 1, "", Double.parseDouble(this.txt_balance.getText()), Double.parseDouble(this.txt_balanceP.getText()),0 ,this.txt_name.getText(), this.txt_last1.getText(), this.txt_last2.getText(), this.jb_gender.getSelectedItem().toString(), this.txt_address.getText(), this.txt_telephone.getText(), this.txt_phone.getText(), this.txt_cedula.getText());
-        this.tme.initTable(tb_Employees);
-        JOptionPane.showMessageDialog(new JFrame(), "Agregado.", "Nice",
-        JOptionPane.INFORMATION_MESSAGE);
-        clear(); 
+        
     }//GEN-LAST:event_btn_AddActionPerformed
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed

@@ -8,6 +8,7 @@ package restaurant;
 import com.restaurant.classes.Comment;
 import com.restaurant.classes.Customer;
 import com.restaurant.classes.Employe;
+import com.restaurant.classes.KindEmploye;
 import com.restaurant.classes.KindProduct;
 import com.restaurant.classes.Order;
 import com.restaurant.classes.Product;
@@ -24,6 +25,7 @@ import com.restaurant.classes.User;
 public class Main {
     
     User user = new User();
+    KindEmploye kindEmploye = new KindEmploye();
     Employe emp = new Employe();
     Comment comment = new Comment();
     Table table = new Table();
@@ -32,6 +34,7 @@ public class Main {
     KindProduct kind = new KindProduct();
     Reservation reser = new Reservation();
     Order order = new Order();
+    
     public static void createFile(){
         /*user.createFile();
         emp.createFile();*/
@@ -67,12 +70,8 @@ public class Main {
         kind.validateFile();
         reser.validateFile();
         order.validateFile();
+        kindEmploye.validateFile();
     }
-    public static void main(String[] args){
-        
-        Main m = new Main();
-        //m.
-        
-    }
+    
 
 }
