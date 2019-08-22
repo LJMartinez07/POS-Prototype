@@ -98,10 +98,7 @@ public class MainProducts extends javax.swing.JInternalFrame {
             System.out.println(str.getName());
             value.addElement(new KindProduct(str.getIdKindOfProduct(), str.getName()));                     
         }
-        /*if (this.getKindsProducts.getEmployees().size()>0) {
-          
-           
-        }*/
+      
          if (value.getSize() == 0) {
                 
                  value.addElement( new KindProduct(0,  "Empty") );    

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Luis
  */
 public class TableModelsKindOfProducts {
-       String[] title = {"Id", "Nombre"};
+    String[] title = {"Id", "Nombre"};
     String[] register = new String[2];
     
        

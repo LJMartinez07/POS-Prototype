@@ -13,6 +13,8 @@ import com.restaurant.views.maintenances.MainProducts;
 import com.restaurant.views.maintenances.MainReservation;
 import com.restaurant.views.maintenances.MainTables;
 import com.restaurant.views.maintenances.MainUsers;
+import com.restaurant.views.movements.MainInOutProduct;
+import com.restaurant.views.movements.MainOrders;
 
 /**
  *
@@ -31,6 +33,8 @@ public class MainApp extends javax.swing.JFrame {
     private MainProducts regProducts;
     private MainKindsOfProducts regKinds;
     private MainReservation regReservations;
+    private MainOrders regOrders;
+    private MainInOutProduct regInOut;
     public MainApp() {
         initComponents();
     }
@@ -149,9 +153,19 @@ public class MainApp extends javax.swing.JFrame {
         movements.setText("Movimientos");
 
         movementOrders.setText("De Pedidios");
+        movementOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                movementOrdersActionPerformed(evt);
+            }
+        });
         movements.add(movementOrders);
 
         movementProducts.setText("Entrada-Salida Productos");
+        movementProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                movementProductsActionPerformed(evt);
+            }
+        });
         movements.add(movementProducts);
 
         jMenuBar1.add(movements);
@@ -250,9 +264,20 @@ public class MainApp extends javax.swing.JFrame {
         regReservations = new MainReservation();
         MainApp.DesktopPane.add(regReservations);
         regReservations.show();
-        
-        
     }//GEN-LAST:event_maintancereservationActionPerformed
+
+    private void movementOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movementOrdersActionPerformed
+        
+        regOrders = new MainOrders();
+        MainApp.DesktopPane.add(regOrders);
+        regOrders.show();
+    }//GEN-LAST:event_movementOrdersActionPerformed
+
+    private void movementProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movementProductsActionPerformed
+        regInOut = new MainInOutProduct();
+        MainApp.DesktopPane.add(regInOut);
+        regInOut.show();        
+    }//GEN-LAST:event_movementProductsActionPerformed
 
   
    

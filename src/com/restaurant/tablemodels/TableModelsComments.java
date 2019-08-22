@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Luis
  */
 public class TableModelsComments {
-     String[] title = {"Id","Email", "Asunto", "Descripcion", "Fecha"};
+    String[] title = {"Id","Email", "Asunto", "Descripcion", "Fecha"};
     String[] register = new String[5];
     
        

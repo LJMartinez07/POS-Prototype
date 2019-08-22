@@ -83,7 +83,7 @@ public class Customer extends Person implements FileActions{
     @Override
     public void writeFile() {
          SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-         try {
+        try {
             FileWriter writer = new FileWriter(this.fileName);
             int size = this.getCustomers().size();
             for (int i=0;i<size;i++) {
@@ -145,7 +145,7 @@ public class Customer extends Person implements FileActions{
     @Override
     public void validateFile() {
         
-         File file = new File(this.fileName);
+        File file = new File(this.fileName);
         if (!file.exists()) {
             Date date = new Date();
             this.createFile();

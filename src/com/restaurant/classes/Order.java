@@ -150,6 +150,7 @@ public class Order implements FileActions{
     @Override
     public void writeFile() {
         
+       
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
    
         try {
@@ -158,9 +159,9 @@ public class Order implements FileActions{
             for (int i=0;i<size;i++) {
                 Order str = this.getOrders().get(i);
                 String strDate= formatter.format(str.getOrderDate()); 
-                writer.write(str.getIdOrder()+","+str.getIdTable()+","+str.getIdCustomer()
+                writer.write(str.getIdOrder()+","+str.getIdEmploye()+","+str.getIdTable()+","+str.getIdCustomer()
                         +","+strDate+","+str.getOrderValue()+","+str.getItbisValue()
-                        +","+str.getBalanceValue()+","+str.getDescription()+","+str.getDescription());
+                        +","+str.getBalanceValue()+","+str.getDescription()+","+str.isState());
 
                 if(i < size-1)
                     writer.write("\n");
@@ -205,24 +206,23 @@ public class Order implements FileActions{
     }
     
     public void add(int IdOrder, int IdEmploye, int IdTable, int IdCustomer, Date OrderDate, double OrderValue, double ItbisValue, double BalanceValue, String Description, boolean State){
-        
         this.getOrders().add(new Order(IdOrder, IdEmploye, IdTable, IdCustomer, OrderDate, OrderValue, ItbisValue, BalanceValue, Description, State));       
         this.writeFile();
         
     }
     
-    public void modify(int IdOrder, int IdEmploye, int IdTable, int IdCustomer, Date OrderDate, double OrderValue, double ItbisValue, double BalanceValue, String Description, boolean State){
+    public void modify(int IdOrder, int IdEmploye, int IdTable, int IdCustomer, Date OrderDate, double OrderValue, double ItbisValue, double BalanceValue){
         
         for (Order order : this.getOrders()) {
             if (IdOrder == order.getIdOrder()) {
-                order.setDescription(Description);
+              
                 order.setIdEmploye(IdEmploye);
                 order.setIdTable(IdTable);
                 order.setOrderDate(OrderDate);
                 order.setOrderValue(OrderValue);
                 order.setItbisValue(ItbisValue);
                 order.setBalanceValue(BalanceValue);
-                order.setState(State);
+            
                 
             }
         }

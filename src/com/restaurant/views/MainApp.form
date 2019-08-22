@@ -84,11 +84,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="De Pedidios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="movementOrdersActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="movementProducts">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Entrada-Salida Productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="movementProductsActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

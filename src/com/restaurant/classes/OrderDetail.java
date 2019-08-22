@@ -21,7 +21,8 @@ import java.util.Scanner;
  */
 public class OrderDetail implements FileActions{
     int IdOrder, SecOrder, IdProduct;
-    double Quantity, ProductPrice;
+    double Quantity, ProductPrice, Amount, ItbisAmount;
+    boolean ITBIS;
     String fileName="Files/OrderDetail.txt";
     
     ArrayList<OrderDetail> orderDetailes = new ArrayList<>();
@@ -29,12 +30,15 @@ public class OrderDetail implements FileActions{
     public OrderDetail() {
     }
 
-    public OrderDetail(int IdOrder, int SecOrder, int IdProduct, double Quantity, double ProductPrice) {
+    public OrderDetail(int IdOrder, int SecOrder, int IdProduct, double Quantity, double ProductPrice, double Amount, double ItbisAmount, boolean ITBIS) {
         this.IdOrder = IdOrder;
         this.SecOrder = SecOrder;
         this.IdProduct = IdProduct;
         this.Quantity = Quantity;
         this.ProductPrice = ProductPrice;
+        this.Amount = Amount;
+        this.ItbisAmount = ItbisAmount;
+        this.ITBIS = ITBIS;
     }
 
     public int getIdOrder() {
@@ -77,6 +81,30 @@ public class OrderDetail implements FileActions{
         this.ProductPrice = ProductPrice;
     }
 
+    public double getAmount() {
+        return Amount;
+    }
+
+    public void setAmount(double Amount) {
+        this.Amount = Amount;
+    }
+
+    public double getItbisAmount() {
+        return ItbisAmount;
+    }
+
+    public void setItbisAmount(double ItbisAmount) {
+        this.ItbisAmount = ItbisAmount;
+    }
+
+    public boolean isITBIS() {
+        return ITBIS;
+    }
+
+    public void setITBIS(boolean ITBIS) {
+        this.ITBIS = ITBIS;
+    }
+
     public ArrayList<OrderDetail> getOrderDetailes() {
         return orderDetailes;
     }
@@ -85,6 +113,10 @@ public class OrderDetail implements FileActions{
         this.orderDetailes = orderDetailes;
     }
 
+    
+
+    
+    
     @Override
     public void createFile() {
         File file = new File(this.fileName);
@@ -108,7 +140,7 @@ public class OrderDetail implements FileActions{
                 OrderDetail str = this.getOrderDetailes().get(i);
             
                 writer.write(str.getIdOrder()+","+str.getSecOrder()+","+str.getIdProduct()
-                        +","+str.getQuantity()+","+str.getProductPrice());
+                        +","+str.getQuantity()+","+str.getProductPrice()+","+str.getAmount()+","+str.getItbisAmount()+","+str.isITBIS());
 
                 if(i < size-1)
                     writer.write("\n");
@@ -127,7 +159,7 @@ public class OrderDetail implements FileActions{
             x = new Scanner(new File(this.fileName));
             x.useDelimiter("[,\n]");
             while(x.hasNext()){
-                this.getOrderDetailes().add(new OrderDetail(x.nextInt(), x.nextInt(), x.nextInt(), x.nextDouble(), x.nextDouble()));
+                this.getOrderDetailes().add(new OrderDetail(x.nextInt(), x.nextInt(), x.nextInt(), x.nextDouble(), x.nextDouble(), x.nextDouble(),x.nextDouble(), x.nextBoolean()));
             }
         } catch (FileNotFoundException e) {
             System.out.println("File 'OrderDetail.txt' not found read method");
@@ -140,27 +172,31 @@ public class OrderDetail implements FileActions{
         File file = new File(this.fileName);
         if (!file.exists()) {
             this.createFile();
-            this.getOrderDetailes().add(new OrderDetail(1, 1, 1, 50, 150));
-            this.writeFile();
+           // this.getOrderDetailes().add(new OrderDetail(1, 1, 1, 50, 150));
+           // this.writeFile();
             System.out.println("Default OrderDetail has been created");
         }
     
     }
     
-    public void add(int IdOrder, int SecOrder, int IdProduct, double Quantity, double ProductPrice){
-        this.getOrderDetailes().add(new OrderDetail(IdOrder, SecOrder, IdProduct, Quantity, ProductPrice));
+    public void add(int IdOrder, int SecOrder, int IdProduct, double Quantity, double ProductPrice, double Amount, double AmountItbis, boolean Itbis ){
+        this.getOrderDetailes().add(new OrderDetail(IdOrder, SecOrder, IdProduct, Quantity, ProductPrice, Amount, AmountItbis, Itbis));
         this.writeFile();
         
     }
     
-    public void modify(int IdOrder, int SecOrder, int IdProduct, double Quantity, double ProductPrice){
+    public void modify(int IdOrder, int SecOrder, int IdProduct, double Quantity, double ProductPrice, double Amount, double AmountItbis, boolean Itbis){
         for (OrderDetail orderDetaile : this.getOrderDetailes()) {
-            if (orderDetaile.getIdOrder() == IdOrder) {
+            if (orderDetaile.getIdOrder() == IdOrder && orderDetaile.getIdProduct() == IdProduct ) {
                 orderDetaile.setIdProduct(IdProduct);
                 orderDetaile.setSecOrder(SecOrder);
+                orderDetaile.setAmount(Amount);
+                orderDetaile.setItbisAmount(AmountItbis);
                 orderDetaile.setProductPrice(ProductPrice);
                 orderDetaile.setQuantity(Quantity);
+                orderDetaile.setITBIS(Itbis);
                 break;
+               
                 
             }
             
